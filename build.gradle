@@ -1,0 +1,79 @@
+plugins {
+    id 'org.jetbrains.kotlin.plugin.jpa' version '1.3.21'
+    id 'org.springframework.boot' version '2.1.3.RELEASE'
+    id 'org.jetbrains.kotlin.jvm' version '1.3.21'
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.3.21'
+}
+
+project.ext {
+    swaggerVersion = '2.9.2'
+    lombokVersion = '1.16.10'
+    jwtVersion = '2.3.0'
+}
+
+apply plugin: 'idea'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-spring'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.document.RESTServer'
+version = '0.0.1-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    baseName = 'POC-REST-Server'
+    version =  '1.0.0'
+}
+
+dependencies {
+   // implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
+    implementation 'org.jetbrains.kotlin:kotlin-reflect'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+
+    // JPA Data (We are going to use Repositories, Entities, Hibernate, etc...)
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.1.4'
+
+    compile("org.springframework:spring-jdbc")
+    compile("com.h2database:h2:1.4.191")
+
+
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+
+    //swagger
+    //compile 'io.springfox:springfox-swagger2:' + swaggerVersion
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: swaggerVersion
+    //compile 'io.springfox:springfox-swagger-ui:' + swaggerVersion
+// https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: swaggerVersion
+
+    //envelop response
+    compile("org.springframework.boot:spring-boot-starter-hateoas")
+
+    compile 'org.projectlombok:lombok:' + lombokVersion
+
+    // https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
+    compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+
+}
+
+compileKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ['-Xjsr305=strict']
+        jvmTarget = '1.8'
+    }
+}
