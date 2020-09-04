@@ -1,6 +1,5 @@
 package com.document.RESTServer
 
-import com.document.RESTServer.controller.SampleController
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import springfox.documentation.swagger2.annotations.EnableSwagger2
