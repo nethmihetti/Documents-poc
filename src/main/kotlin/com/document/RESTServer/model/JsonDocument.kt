@@ -13,19 +13,19 @@ object JsonDocument: Serializable {
  var first_name: String = ""
  var patronymic_name: String = ""
  var last_name: String = ""
- var birth_date: Date = Date(946684800) //2000-01-01
+ var birth_date: String = "" //Date(946684800) //2000-01-01
  var sex: String = ""
  var work_place: String = ""
  var position: String = ""
- lateinit var address: Address
+ var address: String = ""
  var city = ""
  lateinit var social_affiliation: SocialAffiliation
  lateinit var population_category: PopulationCategory
  var is_decreed_group: Boolean = false
  lateinit var last_FG_date: LastFGSurvey
  lateinit var last_FG_place: PlaceOfFGSurvey
- var date_of_first_medical_treatment: Date = Date(946684800) //2000-01-01
- var date_of_registration_of_antituberculous_inst: Date = Date(946684800) //2000-01-01
+ var date_of_first_medical_treatment: String = ""// Date(946684800) //2000-01-01
+ var date_of_registration_of_antituberculous_inst: String = "" //Date(946684800) //2000-01-01
  lateinit var disease_detection: DiseaseDetection
  lateinit var disease_type: DiseaseType
  lateinit var detection_method_of_antituberculous: DetectionMethodOfAntituberculous
@@ -36,9 +36,9 @@ object JsonDocument: Serializable {
  lateinit var detection_method_of_bacteria: DetectionMethodOfBacteria
  lateinit var concomitant_disease: ConcomitantDiseases
  var is_registered_in_clinic: Boolean = false
- var date_of_cvcc_diagnosis_confirmed: Date = Date(946684800) //2000-01-01
+ var date_of_cvcc_diagnosis_confirmed: String = "" //Date(946684800) //2000-01-01
  var doctor_name: String = ""
- var date_of_notification: Date = Date(946684800) //2000-01-01
+ var date_of_notification: String = ""//Date(946684800) //2000-01-01
 }
 
 @Data

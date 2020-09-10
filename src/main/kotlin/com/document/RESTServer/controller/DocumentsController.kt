@@ -1,8 +1,10 @@
 package com.document.RESTServer.controller
 
 import com.document.RESTServer.model.Document
+import com.document.RESTServer.model.JsonDocument
 import com.document.RESTServer.service.DocumentsService
 import org.springframework.web.bind.annotation.*
+import javax.print.Doc
 
 @RestController
 @RequestMapping("/api/V1/documents")
@@ -20,8 +22,8 @@ class DocumentsController(private val documentsService: DocumentsService){
     }
 
     @PostMapping()
-    fun postNewDocument(): String {
-        return "OK"
+    fun postNewDocument(@RequestBody body: JsonDocument): Document {
+        return documentsService.postDocument(body);
     }
 
     @PatchMapping(":id")

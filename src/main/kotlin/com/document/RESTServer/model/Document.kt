@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor
 import org.hibernate.annotations.Type
 import org.hibernate.annotations.TypeDef
 import java.sql.Date
+import java.time.LocalDateTime
 import javax.persistence.*
 
 
@@ -18,19 +19,19 @@ import javax.persistence.*
 data class Document (
 
     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long,
+    @Column(name = "id", nullable = false, unique = true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    val id: Long,
 
-    @Column(name="data")
+    @Column(name="data", columnDefinition = "jsonb")
     @Type(type = "jsonb")
-    var data: JsonDocument,
+    val data: JsonDocument,
 
     @Column(name="created_at")
-    var created_at: Date,
+    val createdAt: LocalDateTime? = LocalDateTime.now(),
 
     @Column(name="updated_at")
-    var updated_at: Date
+    val updatedAt: LocalDateTime? = LocalDateTime.now()
 
 )
 
